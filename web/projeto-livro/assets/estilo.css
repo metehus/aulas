@@ -122,3 +122,7 @@ footer {
 b, bold {
     font-weight: bold;
 }
+
+em {
+    font-style: italic;
+}
