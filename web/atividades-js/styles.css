@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700;800&display=swap');
+
+* {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+body {
+    padding: 10px;
+}
+
+.atividade h1 {
+    font-weight: 800;
+    font-size: 40px;
+}
+
+.atividade {
+    background: rgba(0, 0, 0, 0.15);
+    padding: 2px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 16px;
+}
+
+button {
+    background: teal;
+    color: white;
+    border: 3px solid teal;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+button:hover {
+    border: 3px solid teal;
+    background: rgb(0, 85, 85);
+}
