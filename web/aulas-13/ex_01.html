@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aula 1</title>
+</head>
+<body>
+  <form>
+    <label for="cep">CEP</label>
+    <input type="text" name="cep">
+    <button>Ver cep</button>
+
+    <div id="data"></div>
+  </form>
+</body>
+<script>
+  document.querySelector('form').onsubmit = async (event) => {
+    event.preventDefault()
+    
+    const cep = document.querySelector('input[name=\'cep\']').value
+    try {
+      const data = await fetch(`https://viacep.com.br/ws/${cep}/json`).then(r => r.json())
+
+      document.getElementById('data').innerHTML = ''
+      for (const [key, value] of Object.entries(data)) {
+        document.getElementById('data').innerHTML += `<b>${key}:</b> ${value}<br>`
+      }
+
+    } catch (err) {
+      document.getElementById('data').innerHTML = 'Erro: ' + err
+    }
+
+    console.log(data)
+  }
+
+</script>
+</html>

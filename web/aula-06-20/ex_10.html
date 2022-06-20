@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM - Exemplo 10</title>
+</head>
+<body>
+  <div>
+    <p style="text-align: center">
+      Crie uma página HTML com a imagem de um semáforo desligado, centralizado na página e um botão, também centralizado na página, com o texto "Ligar". Ao clicar no botão, o mesmo deve ter seu texto alterado para "Desligar" e, a cada 3 segundos, a cor do semáforo deve ser alterada na sequencia vermelho-amarelo, amarelo-verde, verde-vermelho até que seja pressionado, quando seu texto deve ser alterado para "Ligar".
+    </p>
+    <div class="semaforo2">
+      <img src="./assets/desligado.png" />
+      <button>Ligar</button>
+    </div>
+
+
+  </div>
+</body>
+<style>
+  body {
+    margin: 0 8px;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .semaforo2 {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
+</style>
+<script>
+  /** @type {HTMLImageElement} */
+  const semaforo = document.querySelector('.semaforo2 img')
+  /** @type {HTMLImageElement} */
+  const ligar = document.querySelector('.semaforo2 button')
+
+  let interval = null
+
+  const tick = () => {
+
+  }
+
+  ligar.onclick = () => {
+    if (interval) {
+      clearInterval(interval)
+      interval = null
+      ligar.innerText = 'Ligar'
+      semaforo.src = './assets/desligado.png'
+    } else {
+      ligar.innerText = 'Desligar'
+      semaforo.src = './assets/vermelho.png'
+      interval = setInterval(() => {
+        if (semaforo.src.includes('vermelho')) {
+          semaforo.src = './assets/amarelo.png'
+        } else if (semaforo.src.includes('amarelo')) {
+          semaforo.src = './assets/verde.png'
+        } else if (semaforo.src.includes('verde')) {
+          semaforo.src = './assets/vermelho.png'
+        }
+      }, 3000)
+    }
+  }
+</script>
+</html>
